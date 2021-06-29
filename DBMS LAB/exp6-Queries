@@ -1,0 +1,25 @@
+create database customer;
+use customer;
+
+Create table customers(cust_id int primary key, cust_name varchar(20));
+insert into customers values(1, 'china');
+insert into customers values(2, 'chutki');
+insert into customers values(3, 'tanvi');
+insert into customers values(4, 'sony');
+insert into customers values(5, 'chitti');
+select * from customers;
+
+create table Reservation(resid int, cust_id int, day date, foreign key(cust_id) references customers(cust_id));
+insert into Reservation values(1211,1, '2020-08-28');
+insert into Reservation values(1212,2, '2020-08-25');
+insert into Reservation values(1213,3, '2020-08-23');
+select * from Reservation;
+
+SELECT cust_id from customers WHERE cust_id IN (Select cust_id from Reservation);
+SELECT cust_id from customers WHERE cust_id = Some(Select cust_id from Reservation);
+SELECT cust_id from customers WHERE cust_id not in (Select cust_id from Reservation);
+SELECT cust_id from customers WHERE cust_id = ANY(Select cust_id from Reservation where cust_id >= 2);
+SELECT cust_id from customers WHERE cust_id <>  ALL(Select cust_id from Reservation);
+SELECT * from customers WHERE cust_id between 1 and 4;
+SELECT cust_id from customers WHERE cust_id < 3 or cust_id in (select cust_id from Reservation where day = '2021-08-25');
+SELECT cust_id from customers WHERE cust_id < 3 and cust_id in (select cust_id from Reservation where day = '2021-08-23');
