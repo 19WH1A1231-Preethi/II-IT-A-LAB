@@ -22,5 +22,5 @@ SELECT cust_id from customers WHERE cust_id not in (Select cust_id from Reservat
 SELECT cust_id from customers WHERE cust_id = ANY(Select cust_id from Reservation where cust_id >= 2);
 SELECT cust_id from customers WHERE cust_id <>  ALL(Select cust_id from Reservation);
 SELECT * from customers WHERE cust_id between 1 and 4;
-SELECT cust_id from customers WHERE cust_id < 3 or cust_id in (select cust_id from Reservation where day = '2021-08-25');
-SELECT cust_id from customers WHERE cust_id < 3 and cust_id in (select cust_id from Reservation where day = '2021-08-23');
+SELECT cust_id from customers WHERE cust_id < 3 or cust_id in (select cust_id from Reservation where day = '2020-08-25');
+SELECT cust_id from customers WHERE cust_id < 3 and cust_id in (select cust_id from Reservation where day = '2020-08-23');
