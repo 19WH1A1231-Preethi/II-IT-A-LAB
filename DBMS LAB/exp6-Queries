@@ -15,6 +15,7 @@ insert into Reservation values(1212,2, '2020-08-25');
 insert into Reservation values(1213,3, '2020-08-23');
 select * from Reservation;
 
+SELECT cust_name as Customer_Name from customers WHERE cust_id in (2,4);
 SELECT cust_id from customers WHERE cust_id IN (Select cust_id from Reservation);
 SELECT cust_id from customers WHERE cust_id = Some(Select cust_id from Reservation);
 SELECT cust_id from customers WHERE cust_id not in (Select cust_id from Reservation);
